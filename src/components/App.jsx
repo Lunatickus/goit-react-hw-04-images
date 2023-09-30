@@ -28,7 +28,7 @@ export const App = () => {
         setImages(prevImages => [...prevImages, ...hits]);
         setTotalImages(total);
       } catch (error) {
-        setError(error);
+        setError(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -79,6 +79,7 @@ export const App = () => {
       {largeImageURL !== '' && (
         <Modal onClose={handleCloseModalImage} largeImageURL={largeImageURL} />
       )}
+      {error && <h2>{error}</h2>}
     </StyledAppContainer>
   );
 };
